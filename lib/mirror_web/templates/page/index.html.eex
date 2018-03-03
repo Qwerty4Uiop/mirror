@@ -1,8 +1,25 @@
 <%= rates = Mirror.Currency |> Mirror.Repo.all |> Enum.map(fn currency -> {currency.symbol, currency.rate} end)
 
 for {symbol, rate} <- rates do %>
-  <div class="currency">
+  <div class="currency center">
     <h2><%= symbol %></h2>
-    <p id="<%= symbol %>"><%= rate %></p>
+    <p><span id="<%= symbol %>"><%= rate %></span> USD</p>
   </div>
 <% end %>
+<div class="center">
+<%= form_tag("/calc", method: "get", enforce_utf8: false) do %>
+  <select name="currency">
+    <%= for {symbol, _rate} <- rates do %>
+      <option><%= symbol %></option>
+    <% end %>
+  </select>
+  <input type="date" name="date">
+  <input type="time" name="time">
+  <input type="number" name="amount" required placeholder="Amount">
+  <input type="submit" value="Convert to USD">
+<% end %>
+</div>
+
+<div class="refresh center"><button id="refresh">Refresh rates (<span id="timer">10</span>)</button></div>
+
+<script src="<%= static_path(@conn, "/js/app.js") %>"></script>

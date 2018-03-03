@@ -53,10 +53,21 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 
 socket.connect()
 
-let channel = socket.channel("room:lobby", {})
+let channel = socket.channel("room:lobby", {});
+var timer = 10;
 
 channel.on("rates_refresh", rates => {
-	Object.keys(rates).forEach(function(key) { document.querySelector(`#${key}`).innerText = 1 / rates[key] })
+  Object.keys(rates).forEach(function(key) { document.querySelector(`#${key}`).innerText = 1 / rates[key] });
+  timer = 10;
+})
+
+channel.on("hui", tref => {
+  console.log(tref)
+})
+
+setInterval(function() { document.querySelector("#timer").innerText = timer--; }, 1000)
+document.querySelector("#refresh").addEventListener("click", () => {
+  channel.push("rates_refresh", {})
 })
 
 channel.join()

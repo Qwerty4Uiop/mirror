@@ -1,0 +1,5 @@
+<div class="convert center">
+  <p><%= "#{ @amount } #{ @symbol } = #{ @sum } USD" %></p>
+</div>
+
+<div class="center"><a href="/">Back</a></div>

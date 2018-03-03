@@ -13,4 +13,14 @@ defmodule Mirror do
   	{:ok, rates} = Poison.decode(rates.body)
   	rates
   end
+
+  def insert_rates(rates) do
+  	rates
+  	|> Enum.each(fn {symbol, rate} -> %Mirror.Currency{symbol: symbol, rate: 1 / rate} |> Mirror.Repo.insert end)
+  end
+
+  def update_rates(rates) do
+  	rates
+  	|> Enum.each(fn {symbol, rate} -> Mirror.Currency |> Mirror.Repo.get_by(symbol: symbol) |> Mirror.Currency.changeset(%{rate: 1 / rate}) |> Mirror.Repo.update end)
+  end
 end

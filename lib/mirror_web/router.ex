@@ -17,6 +17,8 @@ defmodule MirrorWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/calc", CalcController, :index
+    get "/calc/:currency", CalcController, :calculate
   end
 
   # Other scopes may use custom stacks.

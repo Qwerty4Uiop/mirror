@@ -8,8 +8,8 @@ defmodule MirrorWeb.PageController do
   	|> Enum.each(&(Mirror.Repo.delete(&1)))
 
   	Mirror.get_rates
-  	# Inserting actual data
-  	|> Enum.each(fn {symbol, rate} -> %Mirror.Currency{symbol: symbol, rate: 1 / rate} |> Mirror.Repo.insert end)
+  	|> Mirror.insert_rates
+  	#|> Enum.each(fn {symbol, rate} -> %Mirror.Currency{symbol: symbol, rate: 1 / rate} |> Mirror.Repo.insert end)
     
     render conn, "index.html"
   end
