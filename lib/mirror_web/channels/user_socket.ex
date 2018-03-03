@@ -2,7 +2,7 @@ defmodule MirrorWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", MirrorWeb.RoomChannel
+  channel "room:*", MirrorWeb.RoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

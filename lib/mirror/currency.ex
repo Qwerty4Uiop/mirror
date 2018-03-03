@@ -1,14 +1,11 @@
 defmodule Mirror.Currency do
-  use Ecto.Schema
+  use Mirror.Schema
   import Ecto.Changeset
   alias Mirror.Currency
 
 
   schema "currencies" do
     field :rate, :float
-    field :symbol, :string
-
-    timestamps()
   end
 
   @doc false

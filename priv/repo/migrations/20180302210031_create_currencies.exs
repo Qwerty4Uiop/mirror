@@ -2,11 +2,11 @@ defmodule Mirror.Repo.Migrations.CreateCurrencies do
   use Ecto.Migration
 
   def change do
-    create table(:currencies) do
-      add :symbol, :string
-      add :rate, :float
+  	drop_if_exists table(:currencies)
 
-      timestamps()
+    create table(:currencies, primary_key: false) do
+      add :symbol, :string, primary_key: true
+      add :rate, :float
     end
 
   end
