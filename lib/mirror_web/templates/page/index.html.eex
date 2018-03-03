@@ -1,5 +1,4 @@
-<%= 
-rates = Mirror.Currency |> Mirror.Repo.all |> Enum.map(fn currency -> {currency.symbol, currency.rate} end)
+<%= rates = Mirror.Currency |> Mirror.Repo.all |> Enum.map(fn currency -> {currency.symbol, currency.rate} end)
 
 for {symbol, rate} <- rates do %>
   <div class="currency">

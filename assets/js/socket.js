@@ -54,14 +54,9 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 socket.connect()
 
 let channel = socket.channel("room:lobby", {})
-let btc = document.querySelector("#BTC"),
-	eth = document.querySelector("#ETH"),
-	bch = document.querySelector("#BCH")
 
 channel.on("rates_refresh", rates => {
-	btc.innerText = 1 / rates.BTC
-	eth.innerText = 1 / rates.ETH
-	bch.innerText = 1 / rates.BCH
+	Object.keys(rates).forEach(function(key) { document.querySelector(`#${key}`).innerText = 1 / rates[key] })
 })
 
 channel.join()
