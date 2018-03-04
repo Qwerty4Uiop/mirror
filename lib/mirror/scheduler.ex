@@ -42,7 +42,6 @@ defmodule Mirror.Scheduler do
     Mirror.update_rates(rates)
     rates = Map.new(rates: rates, timestamp: timestamp)
     MirrorWeb.Endpoint.broadcast! "rates:update", "rates_refresh", rates
-    IO.inspect(rates)
     {:noreply, %{timer_ref: nil, counter: nil}}
   end
 

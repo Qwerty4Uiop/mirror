@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :mirror, Mirror.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: System.get_env("DB_ENV_POSTGRES_USER"), #"postgres",
+  password: System.get_env("DB_ENV_POSTGRES_PASSWORD"), #"postgres",
   database: "mirror_test",
-  hostname: "localhost",
+  hostname: System.get_env("DB_ENV_POSTGRES_HOST"), #"localhost",
   pool: Ecto.Adapters.SQL.Sandbox
