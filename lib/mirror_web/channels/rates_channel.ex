@@ -1,4 +1,4 @@
-defmodule MirrorWeb.RoomChannel do
+defmodule MirrorWeb.RatesChannel do
   use Phoenix.Channel
 
   def join("rates:update", _message, socket) do
