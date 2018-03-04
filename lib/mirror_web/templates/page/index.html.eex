@@ -6,6 +6,11 @@ for {symbol, rate} <- rates do %>
     <p><span id="<%= symbol %>"><%= rate %></span> USD</p>
   </div>
 <% end %>
+
+<div class="actual center">
+  <p>Actual for <span id="actual-time"></span></p>
+</div>
+
 <div class="center">
 <%= form_tag("/calc", method: "get", enforce_utf8: false) do %>
   <select name="currency">
@@ -20,6 +25,18 @@ for {symbol, rate} <- rates do %>
 <% end %>
 </div>
 
-<div class="refresh center"><button id="refresh">Refresh rates (<span id="timer">10</span>)</button></div>
+<div class="refresh center">
+  <input type="date" id="refresh-date">
+  <input type="time" id="refresh-time">
+  <button id="refresh">Refresh rates</button>
+  <div class="center">
+    <span id="refreshing">(Will be automatically refreshed in <span id="timer">10</span> seconds)</span>
+    <span id="not-refreshing">Auto refreshing was stopped</span>
+  </div>
+</div>
+
+<div class="continue center">
+  <button id="continue">Continue auto refreshing</button>
+</div>
 
 <script src="<%= static_path(@conn, "/js/app.js") %>"></script>

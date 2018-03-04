@@ -14,6 +14,7 @@ defmodule Mirror.Application do
       supervisor(MirrorWeb.Endpoint, []),
       # Start your own worker by calling: Mirror.Worker.start_link(arg1, arg2, arg3)
       # worker(Mirror.Worker, [arg1, arg2, arg3]),
+      worker(Mirror.Scheduler, [])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

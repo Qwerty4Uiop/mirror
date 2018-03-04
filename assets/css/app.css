@@ -32,4 +32,18 @@ p {
 	margin-top: 40px;
 }
 
+.actual {
+	margin: 20px 0;
+	color: lightgrey;
+}
+
+#continue {
+	display: none;
+	margin-top: 10px;
+}
+
+#not-refreshing {
+	display: none;
+}
+
 .alert:empty { display: none; }

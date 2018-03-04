@@ -9,7 +9,6 @@ defmodule MirrorWeb.PageController do
 
   	Mirror.get_rates
   	|> Mirror.insert_rates
-  	#|> Enum.each(fn {symbol, rate} -> %Mirror.Currency{symbol: symbol, rate: 1 / rate} |> Mirror.Repo.insert end)
     
     render conn, "index.html"
   end
