@@ -24,8 +24,8 @@ config :phoenix, :stacktrace_depth, 20
 
 config :mirror, Mirror.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres", #System.get_env("DB_ENV_POSTGRES_USER"), #"postgres",
-  password: "postgres", #System.get_env("DB_ENV_POSTGRES_PASSWORD"), #"postgres",
+  username: System.get_env("DB_ENV_POSTGRES_USER"), #"postgres",
+  password: System.get_env("DB_ENV_POSTGRES_PASSWORD"), #"postgres",
   database: "mirror_dev",
-  hostname: "localhost", #System.get_env("DB_ENV_POSTGRES_HOST"), #"localhost",
+  hostname: System.get_env("DB_ENV_POSTGRES_HOST"), #"localhost",
   pool_size: 10

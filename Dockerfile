@@ -1,14 +1,10 @@
 FROM elixir:latest
-
-ENV HOME /opt/mirror
-WORKDIR $HOME
-
-ENV MIX_ENV dev
-
-ENV PORT ${PORT:-4000}
-EXPOSE $PORT
+  
+WORKDIR ./mirror
 
 RUN mix local.hex --force
+
+RUN mix archive.install --force https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez
 
 RUN mix local.rebar --force
 
@@ -22,4 +18,7 @@ COPY . .
 
 RUN mix compile
 
-CMD mix do ecto.create, ecto.migrate, phx.server
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
+    apt-get install -y nodejs
+
+RUN apt-get install -y inotify-tools
