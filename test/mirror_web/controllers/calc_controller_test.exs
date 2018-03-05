@@ -11,4 +11,9 @@ defmodule MirrorWeb.CalaControllerTest do
     assert html_response(conn, 200) =~ "BCH"
   end
 
+  test "GET /calc/:currency with bad timestamp", %{conn: conn} do
+    conn = get conn, "/calc/BCH?amount=123&timestamp=1020191120"
+    assert html_response(conn, 200) =~ "No info for the given date"
+  end
+
 end

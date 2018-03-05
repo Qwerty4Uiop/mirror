@@ -1,5 +1,11 @@
 <div class="convert center">
-  <p><%= "#{ @amount } #{ @symbol } = #{ @sum } USD" %></p>
+  <p>
+    <%= if @sum != 0 do %>
+      <%= "#{ @amount } #{ @symbol } = #{ @sum } USD" %>   
+    <% else %>
+      No info for the given date
+    <% end %>
+  </p>
 </div>
 
 <div class="center"><a href="/">Back</a></div>

@@ -1,6 +1,9 @@
 defmodule MirrorWeb.RatesChannel do
   use Phoenix.Channel
-
+  @moduledoc """
+  Устанавливает соединение с фронтом и перенаправляет сообщения Scheduler'у.
+  Принцип его работы описан в документации к модулю Mirror.Scheduler
+  """
   def join("rates:update", _message, socket) do
     {:ok, socket}
   end
