@@ -1,6 +1,4 @@
 FROM elixir:latest
-  
-WORKDIR ./mirror
 
 RUN mix local.hex --force
 
