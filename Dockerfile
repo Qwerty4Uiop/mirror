@@ -20,3 +20,5 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     apt-get install -y nodejs
 
 RUN apt-get install -y inotify-tools
+
+RUN cd assets && npm install
